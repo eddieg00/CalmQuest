@@ -4,7 +4,7 @@
 
 ## Description
 
-Calm Quest is a website for........
+Calm Quest is a mental health Wwebsite that aims to promote better habits and support mental well-being. It offers a curated collection of  tasks and activities designed to reduce stress, improve mindfulness, and enhance overall mental health. By providing diverse and engaging tasks, CalmQuest helps users cultivate positive habits and find moments of calm in their daily lives.
 
 ## Table of Contents
 
@@ -59,13 +59,13 @@ This project is licensed under the MIT license. For more information about this 
 
 <li><strong><a href="https://github.com/HunterWilson1" target="__blank">Hunter Wilson</a>:</strong> Dev</li>
 
-<li><strong><a href="https://github.com/MichaelMees99" target="__blank">Michael Mees</a>:</strong> Dev </li>
+<li><strong><a href="https://github.com/MichaelMees99" target="__blank">Michael Mees</a>:</strong> Dev</li>
 
-<li><strong><a href="https://github.com/imanmogh" target="__blank">Iman Moghaddas</a>:</strong> Dev </li>
+<li><strong><a href="https://github.com/imanmogh" target="__blank">Iman Moghaddas</a>:</strong> Dev</li>
 
 <li><strong><a href="https://github.com/eddieg00 " target="__blank">Edward Gutierrez</a>:</strong> Dev</li>
 
-<li><strong><a href="https://github.com/Minthare" target="__blank">Joshua Pierre</a>:</strong> Dev </li>
+<li><strong><a href="https://github.com/Minthare" target="__blank">Joshua Pierre</a>:</strong> Dev</li>
 
 
 
