@@ -42,10 +42,13 @@ Live URL: <a href="https://">Calm Quest</a>
 
 ## Technologies
 * JavaScript
-* MySQL
+* Mongoose
 * Node.js
 * Express.js
 * Sequelize
+* Tailwind
+* React
+* Apollo Server
 
 
 ## License
