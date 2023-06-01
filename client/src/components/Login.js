@@ -39,8 +39,8 @@ const Login = () => {
              <div className='flex space-x-2 m-4 items-center justify-center'>
              </div>
              {/* Inputs */}
-             <div className='flex flex-col items-center justify-center mt-2'>
-             <input type="password" className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
+             <div className=' text-black flex flex-col items-center justify-center mt-2'>
+             <input type="name" className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
              -400 focus:outline-none focus:ring-0' placeholder='Name'></input>
                <input type='email' className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
               -400 focus:outline-none focus:ring-0' placeholder='Email'></input>
