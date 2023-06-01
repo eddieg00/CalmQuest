@@ -1,37 +1,43 @@
-const {Schema, model} = require ("mongoose");
+const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const userSchema = new Schema ({
-    name: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
+const userSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/],
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 8,
+  },
+  tasks: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Task",
     },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        match: [(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]
-    },
-    password: {
-        type: String,
-        required: true,
-        minlength: 8
-    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {
-   if (this.isNew || this.isModified("password")) {
+  if (this.isNew || this.isModified("password")) {
     const salt = 10;
-    this.password = await bcrypt.hash(this.password, salt)
-   }
+    this.password = await bcrypt.hash(this.password, salt);
+  }
 
-   next();
+  next();
 });
 
 userSchema.methods.comparePasswords = async function (password) {
-    return bcrypt.compare(password, this.password);
+  return bcrypt.compare(password, this.password);
 };
 
 const User = model("User", userSchema);
