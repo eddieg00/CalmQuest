@@ -7,8 +7,8 @@ const Login = () => {
   
   const LoginForm = () => {
     return(
-       <div className="bg-white rounded-2xl shadow-2xl flex flex-col w-full md:w-1/3 items-center max-w-4xl transition duration-1000 ease-out">
-             <h2 className='p-3 text-3xl font-bold text-emerald-400'>CalmQuest</h2>
+       <div className="bg-white rounded-2xl shadow-2xl flex flex-col w-full md:w-1/2 items-center max-w-4xl transition duration-1000 ease-out">
+             <h2 className='p-3 text-3xl font-bold text-green-600'>CalmQuest</h2>
              <div className="inline-block border-[1px] justify-center w-20 border-blue-400 border-solid"></div>
              <h3 className='text-xl font-semibold text-blue-400 pt-2'>Welcome back!</h3>
              <div className='flex space-x-2 m-4 items-center justify-center'>
@@ -32,7 +32,7 @@ const Login = () => {
   
   const  SignUpForm = () => {
      return(
-        <div className="bg-blue-400 text-white rounded-2xl shadow-2xl  flex flex-col w-full  md:w-1/3 items-center max-w-4xl transition duration-1000 ease-in">
+        <div className="bg-blue-400 text-white rounded-2xl shadow-2xl  flex flex-col w-full  md:w-1/2 items-center max-w-4xl transition duration-1000 ease-in">
               <h2 className='p-3 text-3xl font-bold text-white'>CalmQuest</h2>
              <div className="inline-block border-[1px] justify-center w-20 border-white border-solid"></div>
              <h3 className='text-xl font-semibold text-white pt-2'>Create Account!</h3>
@@ -62,7 +62,7 @@ const Login = () => {
     <main className="flex items-center w-full px-2 md:px-20">
       <div className="hidden md:inline-flex flex-col flex-1 space-y-1">
         <p className='text-6xl text-blue-500 font-bold'>CalmQuest</p>
-        <p className='font-medium text-lg leading-1 text-emerald-400'>CalmQuest your life today!</p>
+        <p className='font-medium text-lg leading-1 text-green-600'>CalmQuest your life today!</p>
       </div>
       {
         isLogin? (
