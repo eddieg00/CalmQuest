@@ -27,11 +27,11 @@ const Login = () => {
       });
       if (!response.ok) {
         const errorData = await response.json();
-        setError(errorData.message)
+        // setError(errorData.message)
       }
     }
     catch (error) {
-      setError(error.message);
+      console.error(error);
     }
   }
 
