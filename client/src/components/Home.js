@@ -46,9 +46,9 @@ export const Home = () => {
             </ul>
           </div>
 
-          <div className=" w-full p-8 bg-white rounded-lg shadow">
+          <div className=" w-full p-8 bg-white rounded-lg shadow mb-2">
             <p className="text-3xl text-center">Today's Affirming Quote:</p>
-            <p className="text-4xl italic text-center bg-gradient-to-l from-emerald-400 via-blue-400 to-emerald-400 bg-clip-text text-transparent">
+            <p className="text-4xl italic text-center bg-gradient-to-l from-emerald-400 via-blue-400 to-emerald-400 bg-clip-text text-transparent mb-2">
                 {quoteData.quote ? `“${quoteData.quote}” - ${quoteData.author}` : 'Loading...'}
             </p>
           </div>
