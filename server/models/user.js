@@ -25,6 +25,10 @@ const userSchema = new Schema({
       ref: "Task",
     },
   ],
+  completedTasks: {
+    type: Number,
+    default: 0, 
+  }
 });
 
 userSchema.pre("save", async function (next) {
