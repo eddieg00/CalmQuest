@@ -48,20 +48,21 @@ const Login = () => {
              <div className='flex space-x-2 m-4 items-center justify-center'>
              </div>
              {/* Inputs */}
-             <form action={handleSubmit}>
-              <div className='flex flex-col items-center justify-center'>
-                <input id="email" value={email} onChange={handleEmailChange} type='email' className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
+
+              <form action={handleSubmit}>
+               <div className='flex flex-col items-center justify-center'>
+                <input type='email' className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
                 -400 focus:outline-none focus:ring-0' placeholder='Email'></input>
-                <input id="password" value={password} onChange={handlePasswordChange} type="password" className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
+                <input type="password" className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
                 -400 focus:outline-none focus:ring-0' placeholder='Password'></input>
-                <button className='rounded-2xl m-2  text-white bg-blue-400 w-2/5 px-4 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in'>
+                <button className='rounded-2xl m-2  text-white bg-blue-400 w-2/5 px-2 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in'>
                   Sign In
                 </button>
-              </div>
-              <div className="inline-block border-[1px] justify-center w-20 border-blue-400 border-solid"></div>
-              <p className='text-blue-400 mt-4 text-sm'>Don't have an account?</p>
-              <p className='text-blue-400 mb-4 text-sm font-medium cursor-pointer' onClick={() => setIsLogin(false)}>Create a New Account?</p>
-             </form>
+               </div>
+               <div className="inline-block border-[1px] justify-center w-20 border-blue-400 border-solid"></div>
+               <p className='text-blue-400 mt-4 text-sm'>Don't have an account?</p>
+               <p className='text-blue-400 mb-4 text-sm font-medium cursor-pointer' onClick={() => setIsLogin(false)}>Create a New Account?</p>
+              </form>
           </div>
     )
   }
