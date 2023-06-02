@@ -19,7 +19,7 @@ const Login = () => {
               -400 focus:outline-none focus:ring-0' placeholder='Email'></input>
               <input type="password" className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
               -400 focus:outline-none focus:ring-0' placeholder='Password'></input>
-              <button className='rounded-2xl m-2  text-white bg-blue-400 w-2/5 px-4 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in'>
+              <button className='rounded-2xl m-2  text-white bg-blue-400 w-2/5 px-2 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in'>
                 Sign In
               </button>
              </div>
