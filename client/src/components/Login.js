@@ -7,10 +7,32 @@ const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const [dataInput, setDataInput] = useState();
-  const submitThis = () =>  {
-    const info = {email: email, password : password};
-    setDataInput([info]);
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
+  }
+
+
+  const handleSubmit = async (values) => {
+    try {
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        setError(errorData.message)
+      }
+    }
+    catch (error) {
+      setError(error.message);
+    }
   }
 
 
@@ -26,11 +48,11 @@ const Login = () => {
              <div className='flex space-x-2 m-4 items-center justify-center'>
              </div>
              {/* Inputs */}
-             <form action={submitThis}>
+             <form action={handleSubmit}>
               <div className='flex flex-col items-center justify-center'>
-                <input id="email" value={email} onChange={(e) => {setEmail(e.target.value)}} type='email' className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
+                <input id="email" value={email} onChange={handleEmailChange} type='email' className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
                 -400 focus:outline-none focus:ring-0' placeholder='Email'></input>
-                <input id="password" value={password} onChange={(e) => {setPassword(e.target.value)}} type="password" className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
+                <input id="password" value={password} onChange={handlePasswordChange} type="password" className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
                 -400 focus:outline-none focus:ring-0' placeholder='Password'></input>
                 <button className='rounded-2xl m-2  text-white bg-blue-400 w-2/5 px-4 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in'>
                   Sign In
