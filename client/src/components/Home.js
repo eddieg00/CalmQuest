@@ -56,15 +56,16 @@ export const Home = () => {
 
             <p className="text-2xl text-center justify-center">Daily Tasks:</p>
             <ul className="mb-6 text-center">
-              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- CalmQuest Hunters mom</li>
-              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Make your bed</li>
-              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Dont kill yourself</li>
-              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Visit the hat man</li>
+              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Brush Your teeth</li>
+              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Make Your Bed</li>
+              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Take A Walk</li>
+              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Breathing Exercise</li>
             </ul>
 
-            <p className="mb-6 text-center">Today's Affirming Quote:</p>
-            <p className="text-4xl italic text-center bg-gradient-to-l from-emerald-400 via-blue-400 to-emerald-400 bg-clip-text text-transparent">
-              {quoteData.quote ? `“${quoteData.quote}” - ${quoteData.author}` : 'Loading...'}
+          <div className=" w-full p-8 bg-white rounded-lg shadow">
+            <p className="text-3xl text-center">Today's Affirming Quote:</p>
+            <p className="text-4xl italic text-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent">
+                {quoteData.quote ? `“${quoteData.quote}” - ${quoteData.author}` : 'Loading...'}
             </p>
           </div>
         </div>
