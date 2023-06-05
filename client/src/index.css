@@ -7,3 +7,17 @@
     @apply w-11 border-[1px] border-blue-400 border-solid h-11 rounded-full px-2 py-1 text-pink-500  hover:text-blue-400 cursor-pointer transition duration-200 hover:animate-pulse;
   }
 }
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('./fonts/Nexa-Heavy.ttf') format('ttf');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('./fonts/Nexa-ExtraLight.ttf') format('ttf');
+  font-weight: 200; /* Extra Light */
+  font-style: normal;
+}

@@ -27,7 +27,7 @@ export const Home = () => {
       <div className="flex flex-grow"></div>
         <div className="h-full bg-white w-3/10 p-8 flex flex-col justify-between">
           <div>
-            <h2 className="text-3xl mb-4 text-emerald-400">CalmQuest</h2>
+            <h2 className="text-3xl mb-4 text-emerald-400 font-nexa font-bold">CalmQuest</h2>
             <button className="rounded-2xl m-2  text-white bg-blue-400 w-2/5 px-2 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in" 
                 onClick={openModal}>Profile
             </button>
@@ -54,19 +54,20 @@ export const Home = () => {
               Welcome to <span className="text-emerald-400">CalmQuest</span>
             </h1>
 
-            <p className="text-2xl text-center justify-center">Daily Tasks:</p>
-            <ul className="mb-6 text-center">
-              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Brush Your teeth</li>
-              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Make Your Bed</li>
-              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Take A Walk</li>
-              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Breathing Exercise</li>
+            <p className="text-2xl text-center justify-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Daily Tasks:</p>
+            <ul className=" mb-6 text-center">
+              <li className="font-mono text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">Brush Your teeth</li>
+              <li className="font-mono text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">Make Your Bed</li>
+              <li className="font-mono text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">Take a Walk</li>
+              <li className="font-mono text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">Breathing Exercise</li>
             </ul>
 
-          <div className=" w-full p-8 bg-white rounded-lg shadow">
-            <p className="text-3xl text-center">Today's Affirming Quote:</p>
-            <p className="text-4xl italic text-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent">
-                {quoteData.quote ? `“${quoteData.quote}” - ${quoteData.author}` : 'Loading...'}
-            </p>
+            <div className=" w-full p-8 bg-white rounded-lg shadow">
+              <p className="text-2xl text-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Today's Affirming Quote:</p>
+              <p className="font-nexa font-ultralight text-3xl italic text-center ">
+                  {quoteData.quote ? `“${quoteData.quote}” - ${quoteData.author}` : 'Loading...'}
+              </p>
+            </div>
           </div>
         </div>
       </div>
