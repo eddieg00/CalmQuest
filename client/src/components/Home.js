@@ -48,9 +48,11 @@ export const Home = () => {
           <p>Logout</p>
         </div>
 
-        <div className="w-full w-7/10 flex flex-col items-start justify-start p-8">
-          <div className="bg-white rounded-lg shadow p-8 w-full overflow-auto mb-6">
-            <h1 className="text-4xl mb-4 text-center">Welcome to <span className="font-nexa font-bold text-emerald-400">CalmQuest</span></h1>
+        <div className="h-full w-full w-7/10 flex items-start justify-start p-8">
+          <div className="bg-white rounded-lg shadow p-8 w-full h-full overflow-auto">
+            <h1 className="text-4xl mb-4 text-center">
+              Welcome to <span className="text-emerald-400">CalmQuest</span>
+            </h1>
 
             <p className="text-2xl text-center justify-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Daily Tasks:</p>
             <ul className=" mb-6 text-center">
@@ -59,7 +61,6 @@ export const Home = () => {
               <li className="font-mono text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">Take a Walk</li>
               <li className="font-mono text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">Breathing Exercise</li>
             </ul>
-          </div>
 
           <div className=" w-full p-8 bg-white rounded-lg shadow">
             <p className="text-2xl text-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Today's Affirming Quote:</p>

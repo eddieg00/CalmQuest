@@ -8,7 +8,7 @@ const App = () => {
 
             <Login />
             <Home />
-            
+
         </div>
     )
 }
