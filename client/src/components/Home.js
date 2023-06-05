@@ -62,11 +62,12 @@ export const Home = () => {
               <li className="font-mono text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">Breathing Exercise</li>
             </ul>
 
-          <div className=" w-full p-8 bg-white rounded-lg shadow">
-            <p className="text-2xl text-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Today's Affirming Quote:</p>
-            <p className="font-nexa font-ultralight text-3xl italic text-center ">
-                {quoteData.quote ? `“${quoteData.quote}” - ${quoteData.author}` : 'Loading...'}
-            </p>
+            <div className=" w-full p-8 bg-white rounded-lg shadow">
+              <p className="text-2xl text-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Today's Affirming Quote:</p>
+              <p className="font-nexa font-ultralight text-3xl italic text-center ">
+                  {quoteData.quote ? `“${quoteData.quote}” - ${quoteData.author}` : 'Loading...'}
+              </p>
+            </div>
           </div>
         </div>
       </div>
