@@ -91,7 +91,7 @@ const resolvers = {
           user.tasks[taskIndex].completed = true;
     
           // increment completed task count
-          user.completedTasksCount++;
+          user.completedTasks++;
     
           // checks if all tasks are complete
           const allTasksCompleted = user.tasks.every((task) => task.completed);
