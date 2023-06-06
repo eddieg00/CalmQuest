@@ -75,42 +75,43 @@ const resolvers = {
       return { token, user };
     },
 
-/*     completeTask: async (parent, { taskId }, context) => {
-        if (context.user) {
-            
-            //find user based off of authenticated id
-            const user = await User.findOneAndUpdate({ _id: context.user.id })
-            
-            //checks to make sure task is in user's array
-            const task = user.tasks.indexOf(taskId);
-
-            //if task is not found then throw error
-            if (task === -1 ) {
-                throw new Error("No tasks found")
-            }
-
-            //removes from user array
-            user.tasks.splice(task, 1);
-
-            //adds count to user completed tasks
-            user.findByIdAndUpdate += 1;
-
-            //if user has completed all the tasks then sets them all back to false
-            if (user.tasks.length === 0 ) {
-                await Task.updateMany({}, { completed: false });
-            }
-
-            //saves updated user
-            await user.save();
-
-            //find task by id and mark comleted
-            const updatedTask = await Task.findOneAndUpdate(
-                { _id: taskId },
-                { completed: true }
-            );
-            return updatedTask;
-        };
-    } */
+    completeTask: async (parent, { taskId }, context) => {
+      if (context.user) {
+        try {
+          // finds the user based on the authenticated id
+          const user = await User.findOne({ _id: context.user._id });
+          
+          // checks if the task exists
+          const taskIndex = user.tasks.findIndex((task) => task._id.toString() === taskId);
+          if (taskIndex === -1) {
+            throw new Error("Task not found for the user");
+          }
+    
+          // marks task as complete
+          user.tasks[taskIndex].completed = true;
+    
+          // increment completed task count
+          user.completedTasksCount++;
+    
+          // checks if all tasks are complete
+          const allTasksCompleted = user.tasks.every((task) => task.completed);
+          if (allTasksCompleted) {
+            // RESETS all tasks completed status to false
+            await Task.updateMany({ _id: { $in: user.tasks.map((task) => task._id) } }, { completed: false });
+          }
+    
+          await user.save();
+    
+          // Find the updated task
+          const updatedTask = await Task.findById(taskId);
+          return updatedTask;
+        } catch (error) {
+          throw new Error("Failed to complete the task");
+        }
+      }
+      throw new AuthenticationError("You need to log in");
+    }
+    
   },
 };
 
