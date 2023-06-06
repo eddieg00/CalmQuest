@@ -16,7 +16,7 @@ const TaskList = () => {
         <li key={index} className="mb-2">
           <button 
             onClick={() => toggleTask(index)}
-            className={`font-mono text-2xl bg-gradient-to-l from-white via-blue-200 to-white text-left w-full py-2 rounded shadow hover:bg-blue-300 transition-colors duration-300 ${checkedTasks[index] ? 'line-through text-gray-400' : ''}`}
+            className={`font-mono text-2xl text-left w-full py-2 rounded shadow hover:bg-blue-300 transition-colors duration-300 ${checkedTasks[index] ? 'line-through text-gray-400' : ''}`}
           >
             {checkedTasks[index] && <span className="mr-2 text-green-500">✓</span>} {task}
           </button>
