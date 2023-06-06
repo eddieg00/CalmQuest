@@ -24,7 +24,7 @@ export const Home = () => {
 
   return (
     <body className="flex flex-col w-full h-screen bg-gradient-to-t from-green-300 via-blue-500 to-purple-600">
-      <div className="flex flex-grow"></div>
+      <div className="flex flex-grow">
         <div className="h-full bg-white w-3/10 p-8 flex flex-col justify-between">
           <div>
             <h2 className="text-3xl mb-4 text-emerald-400 font-nexa font-bold">CalmQuest</h2>
