@@ -16,10 +16,10 @@ const TaskList = () => {
         <li key={index} className="mb-2">
           <button 
             onClick={() => toggleTask(index)}
-            className={`font-mono text-2xl text-left w-full py-2 rounded shadow hover:bg-blue-300 transition-colors duration-300`}
+            className={`font-mono text-2xl text-left w-full py-2 rounded shadow transition-colors duration-300 ${checkedTasks[index] ? 'bg-green-300' : 'hover:bg-blue-300'}`}
           >
-            {checkedTasks[index] && <span className="mr-2 text-green-500 text-2xl">✓</span>}
-            <span className={checkedTasks[index] ? 'line-through text-gray-400' : ''}>{task}</span>
+            {checkedTasks[index] && <span className="mr-2 text-white text-2xl">✓</span>}
+            <span className={checkedTasks[index] ? 'line-through text-white' : ''}>{task}</span>
           </button>
         </li>
       ))}
