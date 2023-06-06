@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const TaskList = () => {
-  const tasks = ['Brush Your teeth', 'Make Your Bed', 'Take a Walk', 'Breathing Exercise', ];
+  const tasks = ['Brush Your teeth', 'Make Your Bed', 'Take a Walk', 'Breathing Exercise'];
   const [checkedTasks, setCheckedTasks] = useState(Array(tasks.length).fill(false));
 
   const toggleTask = index => {
@@ -16,9 +16,10 @@ const TaskList = () => {
         <li key={index} className="mb-2">
           <button 
             onClick={() => toggleTask(index)}
-            className={`font-mono text-2xl text-left w-full py-2 rounded shadow hover:bg-blue-300 transition-colors duration-300 ${checkedTasks[index] ? 'line-through text-gray-400' : ''}`}
+            className={`font-mono text-2xl text-left w-full py-2 rounded shadow hover:bg-blue-300 transition-colors duration-300`}
           >
-            {checkedTasks[index] && <span className="mr-2 text-green-500">✓</span>} {task}
+            {checkedTasks[index] && <span className="mr-2 text-green-500 text-2xl">✓</span>}
+            <span className={checkedTasks[index] ? 'line-through text-gray-400' : ''}>{task}</span>
           </button>
         </li>
       ))}
