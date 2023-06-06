@@ -41,7 +41,7 @@ const TaskItem = ({ task, index, checkedTasks, setCheckedTasks }) => {
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
-        className={`relative overflow-hidden font-mono text-2xl text-left w-full py-2 rounded shadow transition-colors duration-300 border border-black ${checkedTasks[index] ? 'bg-green-300' : 'hover:bg-blue-300'}`}
+        className={`relative overflow-hidden font-mono text-2xl text-left w-full py-2 rounded shadow transition-colors duration-300 border border-black ${checkedTasks[index] ? 'bg-green-300' : 'hover:bg-stone-200'}`}
       >
         {isChecked && <span className="mr-2 text-white text-2xl">✓</span>}
         <span className={`${checkedTasks[index] ? 'line-through text-white' : ''} ml-4`}>{task}</span>

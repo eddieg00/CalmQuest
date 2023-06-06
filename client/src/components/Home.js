@@ -54,7 +54,7 @@ export const Home = () => {
             <h1 className="text-4xl mb-4 text-center">Welcome to <span className="font-nexa font-bold text-emerald-400">CalmQuest</span></h1>
 
             <p className="text-2xl text-center justify-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Daily Quests:</p>
-            {/* Here is the dynamic task list */}
+            {/* Here is the dynamic task list, aka task buttons. the questions array is inside TaskList.js, the styling and effects are in TaskItem. */}
             <TaskList />
           </div>
 
