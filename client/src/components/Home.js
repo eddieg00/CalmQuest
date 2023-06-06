@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getZenQuote } from '../api/quoteApi';
+import TaskList from './TaskList';
 
 export const Home = () => {
   const [quoteData, setQuoteData] = useState({ quote: '', author: '' });
@@ -24,7 +25,7 @@ export const Home = () => {
 
   return (
     <body className="flex flex-col w-full h-screen bg-gradient-to-t from-green-300 via-blue-500 to-purple-600">
-      <div className="flex flex-grow"></div>
+      <div className="flex flex-grow">
         <div className="h-full bg-white w-3/10 p-8 flex flex-col justify-between">
           <div>
             <h2 className="text-3xl mb-4 text-emerald-400 font-nexa font-bold">CalmQuest</h2>
@@ -53,12 +54,9 @@ export const Home = () => {
             <h1 className="text-4xl mb-4 text-center">Welcome to <span className="font-nexa font-bold text-emerald-400">CalmQuest</span></h1>
 
             <p className="text-2xl text-center justify-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Daily Tasks:</p>
-            <ul className=" mb-6 text-center">
-              <li className="font-mono text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">Brush Your teeth</li>
-              <li className="font-mono text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">Make Your Bed</li>
-              <li className="font-mono text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">Take a Walk</li>
-              <li className="font-mono text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">Breathing Exercise</li>
-            </ul>
+            <TaskList />
+              <ul className="mb-6 mx-auto w-1/2">
+              </ul>
           </div>
 
           <div className=" w-full p-8 bg-white rounded-lg shadow">
