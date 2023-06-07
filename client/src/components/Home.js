@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getZenQuote } from '../api/quoteApi';
+import TaskList from './TaskList';
 
 export const Home = () => {
   const [quoteData, setQuoteData] = useState({ quote: '', author: '' });
@@ -27,7 +28,7 @@ export const Home = () => {
       <div className="flex flex-grow">
         <div className="h-full bg-white w-3/10 p-8 flex flex-col justify-between">
           <div>
-            <h2 className="text-3xl mb-4 text-emerald-400">CalmQuest</h2>
+            <h2 className="text-3xl mb-4 text-emerald-400 font-nexa font-bold">CalmQuest</h2>
             <button className="rounded-2xl m-2  text-white bg-blue-400 w-2/5 px-2 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in" 
                 onClick={openModal}>Profile
             </button>
@@ -48,23 +49,19 @@ export const Home = () => {
           <p>Logout</p>
         </div>
 
-        <div className="h-full w-full w-7/10 flex items-start justify-start p-8">
-          <div className="bg-white rounded-lg shadow p-8 w-full h-full overflow-auto">
-            <h1 className="text-4xl mb-4 text-center">
-              Welcome to <span className="text-emerald-400">CalmQuest</span>
-            </h1>
+        <div className="w-full w-7/10 flex flex-col items-start justify-start p-8">
+          <div className="bg-white rounded-lg shadow p-8 w-full overflow-auto mb-6">
+            <h1 className="text-4xl mb-4 text-center">Welcome to <span className="font-nexa font-bold text-emerald-400">CalmQuest</span></h1>
 
-            <p className="text-2xl text-center justify-center">Daily Tasks:</p>
-            <ul className="mb-6 text-center">
-              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- CalmQuest Hunters mom</li>
-              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Make your bed</li>
-              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Dont kill yourself</li>
-              <li className="text-2xl mb-2 bg-gradient-to-l from-white via-blue-200 to-white">- Visit the hat man</li>
-            </ul>
+            <p className="text-2xl text-center justify-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Daily Quests:</p>
+            {/* Here is the dynamic task list, aka task buttons. the questions array is inside TaskList.js, the styling and effects are in TaskItem. */}
+            <TaskList />
+          </div>
 
-            <p className="mb-6 text-center">Today's Affirming Quote:</p>
-            <p className="text-4xl italic text-center bg-gradient-to-l from-emerald-400 via-blue-400 to-emerald-400 bg-clip-text text-transparent">
-              {quoteData.quote ? `“${quoteData.quote}” - ${quoteData.author}` : 'Loading...'}
+          <div className=" w-full p-8 bg-white rounded-lg shadow">
+            <p className="text-2xl text-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Today's Affirming Quote:</p>
+            <p className="font-nexa font-ultralight text-3xl italic text-center ">
+                {quoteData.quote ? `“${quoteData.quote}” - ${quoteData.author}` : 'Loading...'}
             </p>
           </div>
         </div>
