@@ -75,7 +75,7 @@ const resolvers = {
       return { token, user };
     },
 
-    completeTask: async (parent, { taskId }, context) => {
+    /* completeTask: async (parent, { taskId }, context) => {
       if (context.user) {
         try {
           // finds the user based on the authenticated id
@@ -110,7 +110,7 @@ const resolvers = {
         }
       }
       throw new AuthenticationError("You need to log in");
-    }
+    } */
     
   },
 };
