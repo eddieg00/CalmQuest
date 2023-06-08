@@ -14,5 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.3.2"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.9"
   }
 }

@@ -6,8 +6,8 @@ const TaskItem = ({ task, index, checkedTasks, setCheckedTasks }) => {
   const [timerId, setTimerId] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
   const fillAnimation = useSpring({
-    width: isMouseDown ? '100%' : isChecked ? '100%' : '0%',
-    backgroundColor: isMouseDown ? 'rgba(0, 255, 0, 0.2)' : isChecked ? 'rgba(0, 255, 0, 0.2)' : 'transparent',
+    width: isMouseDown ? '100%' : isChecked ? '0%' : '0%',
+    backgroundColor: isMouseDown ? 'rgba(0, 255, 0, 0.2)' : isChecked ? 'rgba(0, 255, 0, 0.0)' : 'transparent',
     config: { duration: 1500 },
     immediate: !isMouseDown,
   });
@@ -24,7 +24,8 @@ const TaskItem = ({ task, index, checkedTasks, setCheckedTasks }) => {
     return () => {
       clearTimeout(timerId);
     };
-  }, [isMouseDown]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMouseDown, index, checkedTasks]);
 
   const handleMouseDown = () => {
     setIsMouseDown(true);

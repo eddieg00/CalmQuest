@@ -170,14 +170,4 @@ export const Home = () => {
   );
 };
 
-const ResourceDetailModal = ({ resource, closeModal }) => {
-  return (
-    <div>
-      <h2>{resource.title}</h2>
-      <p>{resource.description}</p>
-      <button onClick={closeModal}>Close</button>
-    </div>
-  );
-};
-
 export default Home;
