@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { getZenQuote } from '../api/quoteApi';
 import TaskList from './TaskList';
+import { fetchHealthResources } from '../api/HealthApi';
+import HealthResourceList from './healthResourceList';
 
 export const Home = () => {
   const [quoteData, setQuoteData] = useState({ quote: '', author: '' });
   const [modalOpen, setModalOpen] = useState(false);
+  const [healthResources, setHealthResources] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const fetchQuote = async () => {
@@ -12,7 +16,13 @@ export const Home = () => {
       setQuoteData(fetchedQuoteData);
     };
 
+    const loadResources = async () => {
+      const resources = await fetchHealthResources();
+      setHealthResources(resources);
+    };
+
     fetchQuote();
+    loadResources();
   }, []);
 
   const openModal = () => {
@@ -23,28 +33,56 @@ export const Home = () => {
     setModalOpen(false);
   };
 
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const handleResourceClick = (resource) => {
+    console.log(resource);
+  };
+
+  const handleManageAnxiety = () => {
+    console.log("Manage Anxiety Clicked");
+  };
+
+  const handleKeepHeartHealthy = () => {
+    console.log("Keep Heart Healthy Clicked");
+  };
+
+  const handleGetEnoughSleep = () => {
+    console.log("Get Enough Sleep Clicked");
+  };
+
+  const handleGetActive = () => {
+    console.log("Get Active Clicked");
+  };
+
+  const handleChoosingDoctor = () => {
+    console.log("Choosing a Doctor Clicked");
+  };
+
   return (
     <body className="flex flex-col w-full h-screen bg-gradient-to-t from-green-300 via-blue-500 to-purple-600">
       <div className="flex flex-grow">
         <div className="h-full bg-white w-3/10 p-8 flex flex-col justify-between">
           <div>
             <h2 className="text-3xl mb-4 text-emerald-400 font-nexa font-bold">CalmQuest</h2>
-            <button className="rounded-2xl m-2  text-white bg-blue-400 w-2/5 px-2 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in" 
+            <button className="rounded-2xl m-2 text-white bg-blue-400 w-2/5 px-2 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in" 
                 onClick={openModal}>Profile
             </button>
-            <h2 className="text-2xl mt-20 mb-4 text-blue-400">Health Resources</h2>
-            <input
-              type="search"
-              placeholder="Search..."
-              className="mb-6 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100"
-            />
-            <ul>
-              <li className="mb-2">Manage Anxiety</li>
-              <li className="mb-2">Keep your heart Healthy</li>
-              <li className="mb-2">Get Enough Sleep</li>
-              <li className="mb-2">Get Active</li>
-              <li className="mb-2">Choosing a Doctor: Quick Tips</li>
-            </ul>
+              <div className='flex'>
+              <HealthResourceList 
+                healthResources={healthResources} 
+                handleResourceClick={handleResourceClick}
+                handleManageAnxiety={handleManageAnxiety}
+                handleKeepHeartHealthy={handleKeepHeartHealthy}
+                handleGetEnoughSleep={handleGetEnoughSleep}
+                handleGetActive={handleGetActive}
+                handleChoosingDoctor={handleChoosingDoctor}
+                search={search} 
+                handleSearch={handleSearch}
+              />
+              </div>
           </div>
           <p>Logout</p>
         </div>
@@ -52,12 +90,9 @@ export const Home = () => {
         <div className="w-full w-7/10 flex flex-col items-start justify-start p-8">
           <div className="bg-white rounded-lg shadow p-8 w-full overflow-auto mb-6">
             <h1 className="text-4xl mb-4 text-center">Welcome to <span className="font-nexa font-bold text-emerald-400">CalmQuest</span></h1>
-
             <p className="text-2xl text-center justify-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Daily Quests:</p>
-            {/* Here is the dynamic task list, aka task buttons. the questions array is inside TaskList.js, the styling and effects are in TaskItem. */}
             <TaskList />
           </div>
-
           <div className=" w-full p-8 bg-white rounded-lg shadow">
             <p className="text-2xl text-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Today's Affirming Quote:</p>
             <p className="font-nexa font-ultralight text-3xl italic text-center ">
