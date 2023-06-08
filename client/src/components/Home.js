@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getZenQuote } from '../api/quoteApi';
 import TaskList from './TaskList';
 
-export const Home = () => {
+const Home = () => {
   const [quoteData, setQuoteData] = useState({ quote: '', author: '' });
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -134,3 +134,5 @@ export const Home = () => {
     </body>
   );
 };
+
+export default Home;

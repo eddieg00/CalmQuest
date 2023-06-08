@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
-import { ADD_PROFILE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+import { ADD_USER } from '../utils/mutations';
 
 const Signup = () => {
-    const [isLogin,setIsLogin] = useState(false);
+    //const [isLogin,setIsLogin] = useState(false);
 
   const [formState, setFormState] = useState({
     name: '',
     email: '',
     password: '',
   });
-  const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -29,17 +29,21 @@ const Signup = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    //console.log(formState);
 
     try {
-      const { data } = await addProfile({
-        variables: { ...formState },
-      });
-
-      Auth.login(data.addProfile.token);
+      const data = formState;
+      console.log(data);
+      Auth.login(data.name);
+      console.log(data.addUser);
     } catch (e) {
       console.error(e);
     }
+    setFormState({
+      name: '',
+      email: '',
+      password: '',
+    });
   };
 
   return(
@@ -64,8 +68,8 @@ const Signup = () => {
                 name='name'
                 type='text'
                 value={formState.name}
-                onChange={handleChange}>
-                </input>
+                onChange={handleChange}
+                />
             <input 
                 type='email' 
                 className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
@@ -73,8 +77,8 @@ const Signup = () => {
                 placeholder='Email'
                 name='email'
                 value={formState.email}
-                onChange={handleChange}>
-                </input>
+                onChange={handleChange}
+                />
             <input 
                 type="password" 
                 className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
@@ -82,8 +86,8 @@ const Signup = () => {
                 placeholder='*******'
                 name='password'
                 value={formState.password}
-                onChange={handleChange}>
-                </input>
+                onChange={handleChange}
+                />
             <button 
                 className='rounded-2xl m-4 text-blue-400 bg-white w-3/5 px-4 py-2 shadow-md hover:text-white hover:bg-blue-400 transition duration-200 ease-in'
                 style={{cursor: 'pointer'}}
@@ -93,9 +97,9 @@ const Signup = () => {
             </div>
             <div className="inline-block border-[1px] justify-center w-20 border-white border-solid"></div>
             <p className='text-white mt-4 text-sm'>Already have an account?</p>
-            <p 
+            {/* <p 
                 className='text-white mb-4 text-sm font-medium cursor-pointer' 
-                onClick={() => setIsLogin(true)}>Sign In to your Account?</p>
+                onClick={() => setIsLogin(true)}>Sign In to your Account?</p> */}
         </form>
         )}
          {error && (

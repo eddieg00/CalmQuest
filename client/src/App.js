@@ -8,7 +8,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import {Home} from './components/Home'
+import Home from './components/Home'
 
 import Signup from './pages/Signup';
 import Login from './pages/Login';
@@ -57,6 +57,6 @@ const App = () => {
                 </div>
         </Router>
     </ApolloProvider>
-    )
+    );
 }
 export default App;
