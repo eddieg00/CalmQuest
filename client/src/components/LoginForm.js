@@ -1,11 +1,36 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
 
-const Login = () => {
+const LoginForm = () => {
 
-  const [isLogin,setIsLogin] = useState(true);
+  const [isLogin,setIsLogin] = useState(false);
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
+  const [error, setError] = useState();
+
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const response = await fetch('api/login', {
+      method: 'POST',
+      body: JSON.stringify({email, password}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    if(response.ok) {
+      setIsLogin(true);
+    }
+  }
+
+    if(isLogin) {
+      return <Redirect to="/home" />
+    }
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
@@ -27,7 +52,11 @@ const Login = () => {
       });
       if (!response.ok) {
         const errorData = await response.json();
-        // setError(errorData.message)
+        setError(errorData.message);
+      } else {
+        const data = await response.json();
+        localStorage.setItem('token', data.token)
+        history.pushState('/home');
       }
     }
     catch (error) {
@@ -49,11 +78,11 @@ const Login = () => {
              </div>
              {/* Inputs */}
 
-              <form action={handleSubmit}>
+              <form onSubmit={handleLogin}>
                <div className='flex flex-col items-center justify-center'>
-                <input type='email' className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
+                <input onChange={handleEmailChange} type='email' className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
                 -400 focus:outline-none focus:ring-0' placeholder='Email'></input>
-                <input type="password" className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
+                <input onChange={handlePasswordChange} type="password" className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
                 -400 focus:outline-none focus:ring-0' placeholder='Password'></input>
                 <button className='rounded-2xl m-2  text-white bg-blue-400 w-2/5 px-2 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in'>
                   Sign In
@@ -77,7 +106,7 @@ const Login = () => {
              </div>
              {/* Inputs */}
              <div className='flex flex-col items-center justify-center mt-2'>
-             <input type="password" className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
+             <input className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
              -400 focus:outline-none focus:ring-0' placeholder='Name'></input>
                <input type='email' className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
               -400 focus:outline-none focus:ring-0' placeholder='Email'></input>
@@ -113,4 +142,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginForm
