@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { fetchHealthResourceById } from '../api/HealthApi';
 import { fetchHealthResources } from '../api/HealthApi';
+import Modal from './Modal';
 
 const HealthResourceList = ({ handleResourceClick }) => {
   const [healthResources, setHealthResources] = useState([]);
   const [search, setSearch] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [selectedResource, setSelectedResource] = useState(null); // New state for storing the selected resource
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,16 +19,22 @@ const HealthResourceList = ({ handleResourceClick }) => {
   }, []);
 
   const staticResources = [
-    { id: 'anxiety', title: 'Manage Anxiety' },
-    { id: 'heart', title: 'Keep your heart Healthy' },
-    { id: 'sleep', title: 'Get Enough Sleep' },
-    { id: 'active', title: 'Get Active' },
-    { id: 'doctor', title: 'Choosing a Doctor: Quick Tips' },
+    { id: '30560', title: 'Manage stress' },
+    { id: '25', title: 'Keep your heart Healthy' },
+    { id: '30533', title: 'Get Enough Sleep' },
+    { id: '30547', title: 'Get Active' },
+    { id: '30589', title: 'Choosing a Doctor: Quick Tips' },
   ];
 
+  const [loading, setLoading] = useState(false);
+
   const handleResourceButtonClick = async (id) => {
+    setLoading(true);
+    setShowModal(true);
     const resource = await fetchHealthResourceById(id);
-    handleResourceClick(resource);
+    setSelectedResource(resource); 
+    // Once data is fetched, set loading state to false
+    setLoading(false);
   };
 
   const allResources = [...staticResources, ...healthResources];
@@ -69,6 +78,16 @@ const HealthResourceList = ({ handleResourceClick }) => {
           </li>
         ))}
       </ul>
+      <Modal show={showModal} handleClose={() => setShowModal(false)}>
+        {loading ? (
+            <p className="p-4 text-center text-gray-700">Loading...</p> // Show loading text while data is being fetched
+        ) : (
+            <div className="p-4 bg-white text-gray-800 rounded shadow">
+            <h3 className="text-2xl font-semibold mb-2">{selectedResource?.Result.Resources.Resource[0].Title}</h3>
+            <div className="prose" dangerouslySetInnerHTML={{ __html: selectedResource?.Result.Resources.Resource[0].Sections.section[0].Content }}/>
+            </div>
+        )}
+       </Modal>
     </div>
   );
 };
