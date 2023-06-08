@@ -56,7 +56,7 @@ const Signup = () => {
               </p>
             ) : (
         <form onSubmit={handleFormSubmit}>
-            <div className='flex flex-col items-center justify-center mt-2'>
+            <div className=' text-black flex flex-col items-center justify-center mt-2'>
             <input 
                 className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
                 -400 focus:outline-none focus:ring-0' 
@@ -71,7 +71,7 @@ const Signup = () => {
                 className='rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
                 -400 focus:outline-none focus:ring-0' 
                 placeholder='Email'
-                name='Email'
+                name='email'
                 value={formState.email}
                 onChange={handleChange}>
                 </input>
@@ -93,7 +93,9 @@ const Signup = () => {
             </div>
             <div className="inline-block border-[1px] justify-center w-20 border-white border-solid"></div>
             <p className='text-white mt-4 text-sm'>Already have an account?</p>
-            <p className='text-white mb-4 text-sm font-medium cursor-pointer' onClick={() => setIsLogin(true)}>Sign In to your Account?</p>
+            <p 
+                className='text-white mb-4 text-sm font-medium cursor-pointer' 
+                onClick={() => setIsLogin(true)}>Sign In to your Account?</p>
         </form>
         )}
          {error && (

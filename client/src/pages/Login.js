@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-import Signup from './pages/Signup';
 
 import Auth from '../utils/auth';
 
@@ -100,13 +99,6 @@ const Login = (props) => {
                     <p className='text-6xl text-blue-500 font-bold'>CalmQuest</p>
                     <p className='font-medium text-lg leading-1 text-emerald-400'>CalmQuest your life today!</p>
                 </div>
-                {/* {
-                    isLogin? (
-                    <Login/>
-                    ):(
-                    <Signup/>
-                    )
-                } */}
                 </main>
             </div>
          </div>    
