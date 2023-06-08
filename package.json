@@ -14,5 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.3.2"
+  },
+  "dependencies": {
+    "react-spring": "^9.7.1"
   }
 }

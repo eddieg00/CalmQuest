@@ -13,6 +13,7 @@ const typeDefs = gql`
     id: ID!
     statement: String!
     completed: Boolean!
+    trait: Boolean!
  }
  
  type Auth{
@@ -23,6 +24,7 @@ const typeDefs = gql`
 type Query{
     users: [User]
     me: User
+    getTasks: User
 }
 
 type Mutation{
