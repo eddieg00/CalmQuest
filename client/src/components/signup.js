@@ -5,40 +5,30 @@ import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 const Signup = () => {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
+  const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const mutationResponse = await addUser({
+      variables: {
+        email: formState.email,
+        password: formState.password,
+        name: formState.name
+      },
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
       [name]: value,
     });
   };
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formState);
-
-    try {
-        //
-        // use addUser mutation to register user
-      const { data } = await addUser({
-        variables: { ...formState },
-      });
-
-      // Log in user by storing the JWT token?
-      Auth.login(data.addUser.token);
-    } catch (err) {
-      console.error(err);
-    }
-  };
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen md:py-2">
       <main className="flex items-center w-full px-2 md:px-20">
@@ -50,29 +40,30 @@ const Signup = () => {
         </div>
         <div className="flex flex-col space-y-4">
           <h2 className="text-3xl font-bold">Create Account!</h2>
+          <input/>
           <form onSubmit={handleFormSubmit}>
             <input
               type="name"
-              value={formState.name}
+              //value={formState.username}
               onChange={handleChange}
               className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald -400 focus:outline-none focus:ring-0"
               placeholder="Name"
             />
             <input
               type="email"
-              value={formState.email}
+              //value={formState.email}
               onChange={handleChange}
               className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald -400 focus:outline-none focus:ring-0"
               placeholder="Email"
             />
             <input
               type="password"
-              value={formState.password}
+              //value={formState.password}
               onChange={handleChange}
               className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald -400 focus:outline-none focus:ring-0"
               placeholder="Password"
             />
-            <button className="rounded-2xl m-4 text-blue-400 bg-white w-3/5 px-4 py-2 shadow-md hover:text-white hover:bg-blue-400 transition duration-200 ease-in">
+            <button className="rounded-2xl m-4 text-blue-400 bg-white w-3/5 px-4 py-2 shadow-md hover:text-white hover:bg-blue-400 transition duration-200 ease-in" type="submit">
               Sign Up
             </button>
           </form>
