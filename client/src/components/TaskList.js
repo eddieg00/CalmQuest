@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import TaskItem from './TaskItem';
 import { SAVE_TASK } from '../utils/queries';
 import {useMutation} from "@apollo/client";
+// USE useQuery TO GET TASKS AND DISPLAY DATA TO THE MAPPED RETURN
+// import { useQuery } from '@apollo/client';
+// import {GET_TASKS} from "../utils/queries"
 
 const TaskList = () => {
   const tasks = ['Message Loved Ones', 'Make Your Bed', 'Take a Walk', 'Breathing Exercise'];

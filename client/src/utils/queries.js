@@ -1,16 +1,17 @@
 import {gql} from "@apollo/client";
 
 
-export const GET_USERs = gql`
+export const GET_USERS = gql`
 query users {
     users {
         _id
         name
         email
-        task {
+        tasks {
             _id
             task
             completed
+            trait
         }
     }
 }
@@ -22,20 +23,27 @@ query me {
         _id
         name
         email
-        task {
+        tasks {
             _id
             task
             completed
+            trait
         }
     }
 }
 `
-export const GET_TASKs = gql`
+export const GET_TASKS = gql`
 query getTasks {
-    tasks {
+    me {
         _id
-        task
-        completed
+        name
+        email
+        tasks {
+            _id
+            task
+            completed
+            trait
+        }
     }
 }
 `
