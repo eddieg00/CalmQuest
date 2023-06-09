@@ -21,7 +21,7 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to log in");
     },
-    getTasks: async (context) => {
+    getTasks: async (parent, args, context) => {
       if (context.user) {
         const userAccount = User.findOne({ _id: context.user._id });
         return userAccount.tasks
@@ -54,11 +54,12 @@ const resolvers = {
 
   Mutation: {
     //create new user with name,email,password and generates token
-    addUser: async (parent, { name, email, password }) => {
-      const user = await User.create({ name, email, password });
+    addUser: async (parent, args) => {
+      const user = await User.create( args );
       const token = signToken(user);
 
-      return { token, user };
+      return { token, user }; 
+      console.log(args)
     },
 
     //find user by email

@@ -5,8 +5,8 @@ const typeDefs = gql`
     id: ID!
     name: String!
     email: String!
-    tasks: [ID]!
-    completedTasks: Int!
+    tasks: [ID]
+    completedTasks: Int
  }
 
  type Task {

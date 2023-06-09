@@ -3,12 +3,16 @@ import { getZenQuote } from '../api/quoteApi';
 import TaskList from './TaskList';
 import { fetchHealthResources } from '../api/HealthApi';
 import HealthResourceList from './healthResourceList';
+/* import { useQuery } from '@apollo/client';
+import { ME } from "../utils/queries"; */
 
 export const Home = () => {
   const [quoteData, setQuoteData] = useState({ quote: '', author: '' });
   const [modalOpen, setModalOpen] = useState(false);
   const [healthResources, setHealthResources] = useState([]);
   const [search, setSearch] = useState('');
+
+  // const { data } = useQuery(ME);
 
   useEffect(() => {
     const fetchQuote = async () => {
@@ -61,6 +65,7 @@ export const Home = () => {
     console.log("Choosing a Doctor Clicked");
   };
 
+  //const { name, completed } = data.me;
   return (
     <body className="flex flex-col w-screen min-h-screen bg-gradient-to-t from-green-300 via-blue-500 to-purple-600">
       <div className="flex flex-grow">
@@ -145,7 +150,7 @@ export const Home = () => {
 
               <div className="mt-8">
                 <h2 className="text-white font-bold text-2xl tracking-wide">
-                  Jonathan <br /> Smith
+                  {/* {name} */}
                 </h2>
               </div>
 
@@ -153,8 +158,8 @@ export const Home = () => {
                 <div className="h-1 rounded-full w-2/5 bg-sky-500 "></div>
               </div>
               <div className="mt-3 text-white text-sm">
-                <span className="text-white font-semibold">Goal for today:</span>
-                <span className="text-white"> 40%</span>
+                <span className="text-white font-semibold">Daily tasks completed:</span>
+                {/* <span className="text-white"> {completed} </span> */}
               </div>
               <button
                 className="mt-6 bg-emerald-600 hover:bg-emerald-400 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
