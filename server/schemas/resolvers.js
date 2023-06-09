@@ -27,7 +27,7 @@ const resolvers = {
         return userAccount.tasks
       }
       throw new AuthenticationError("You need to log in")
-    }
+    },
 
     saveTask: async (_, { userId, taskId }) => {
       try {
