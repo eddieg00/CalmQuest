@@ -9,6 +9,10 @@ const taskSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  trait: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 const Task = model("Task", taskSchema);

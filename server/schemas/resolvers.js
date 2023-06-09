@@ -1,7 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
-const User = require("../models/user");
+const { User, Task } = require("../models");
 const { signToken } = require("../utils/auth");
-const Task = require("../models/task");
 
 const resolvers = {
   Query: {
@@ -22,6 +21,13 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to log in");
     },
+    getTasks: async (context) => {
+      if (context.user) {
+        const userAccount = User.findOne({ _id: context.user._id });
+        return userAccount.tasks
+      }
+      throw new AuthenticationError("You need to log in")
+    }
 
     //easier on frontend to filter out tasks
     /* randomTask: async (parent, args, context) => {
