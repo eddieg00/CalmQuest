@@ -5,27 +5,36 @@ import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 const Signup = () => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ name: '', email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        email: formState.email,
-        password: formState.password,
-        name: formState.name
-      },
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+    console.log(formState)
+    try {
+    
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+      console.log(data);
+      if (!data) {
+        throw new Error('something went wrong!');
+      }
+      const token = data.addUser.token;
+      Auth.login(token);  
+    } catch (err) {
+      console.error(err);
+      //setShowAlert(true);
+    }
+     
+    
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
       ...formState,
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -40,25 +49,27 @@ const Signup = () => {
         </div>
         <div className="flex flex-col space-y-4">
           <h2 className="text-3xl font-bold">Create Account!</h2>
-          <input/>
           <form onSubmit={handleFormSubmit}>
             <input
               type="name"
-              //value={formState.username}
+              name="name"
+              value={formState.name}
               onChange={handleChange}
               className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald -400 focus:outline-none focus:ring-0"
               placeholder="Name"
             />
             <input
               type="email"
-              //value={formState.email}
+              name="email"
+              value={formState.email}
               onChange={handleChange}
               className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald -400 focus:outline-none focus:ring-0"
               placeholder="Email"
             />
             <input
               type="password"
-              //value={formState.password}
+              name="password"
+              value={formState.password}
               onChange={handleChange}
               className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald -400 focus:outline-none focus:ring-0"
               placeholder="Password"
