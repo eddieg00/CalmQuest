@@ -62,9 +62,9 @@ export const Home = () => {
   };
 
   return (
-    <body className="flex flex-col w-full h-screen bg-gradient-to-t from-green-300 via-blue-500 to-purple-600">
+    <body className="flex flex-col w-screen min-h-screen bg-gradient-to-t from-green-300 via-blue-500 to-purple-600">
       <div className="flex flex-grow">
-        <div className="h-full bg-white w-3/10 p-8 flex flex-col justify-between">
+        <div className="bg-white w-3/10 p-8 flex flex-col justify-between h-screen">
           <div>
             <h2 className="text-3xl mb-4 text-emerald-400 font-nexa font-bold">CalmQuest</h2>
             <button className="rounded-2xl m-2 text-white bg-blue-400 w-2/5 px-2 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in" 
