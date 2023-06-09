@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
+import ConfettiAnimation from './ConfettiAnimation';
 
 const TaskItem = ({ task, index, checkedTasks, setCheckedTasks }) => {
   const [isMouseDown, setIsMouseDown] = useState(false);
