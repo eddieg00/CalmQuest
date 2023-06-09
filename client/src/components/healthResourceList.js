@@ -82,11 +82,12 @@ const HealthResourceList = ({ handleResourceClick }) => {
             <p className="p-4 text-center text-gray-700">Loading...</p>
         ) : (
             <div className="p-4 bg-white text-gray-800 rounded shadow">
-            <h3 className="text-2xl font-semibold mb-2">{selectedResource?.Result.Resources.Resource[0].Title}</h3>
+            <h3 className="text-3xl text-center font-semibold mb-4 bg-gray-100 p-2 rounded">{selectedResource?.Result.Resources.Resource[0].Title}</h3>
+            
             <div className="prose prose-blue " dangerouslySetInnerHTML={{ __html: selectedResource?.Result.Resources.Resource[0].Sections.section[0].Content }}/>
             </div>
         )}
-       </Modal>
+      </Modal>
     </div>
   );
 };
