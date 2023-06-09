@@ -1,43 +1,46 @@
-import React, {useState} from "react";
-import {Link} from "react-router-dom";
-import {useMutation} from "@apollo/client";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 const Signup = () => {
-    const [formState, setFormState] = useState({
-        name: "",
-        email: "",
-        password: "",
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const [addUser] = useMutation(ADD_USER);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
     });
+  };
 
-    const [addUser, {error, data}] = useMutation(ADD_USER);
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
 
-    const handleChange = (event) => {
-        const {name, value} = event.target;
+    try {
+        //
+        // use addUser mutation to register user
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
 
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    };
-
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        console.log(formState);
-
-        try {
-            const {data} = await addUser({
-                variables: {...formState},
-            });
-
-            Auth.login(data.addUser.token)
-        } catch (err) {
-            console.error(err);
-        }
-    };
-    return(
-        <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen md:py-2">
+      // Log in user by storing the JWT token?
+      Auth.login(data.addUser.token);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  return (
+    <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen md:py-2">
       <main className="flex items-center w-full px-2 md:px-20">
         <div className="hidden md:inline-flex flex-col flex-1 space-y-1">
           <p className="text-6xl text-blue-500 font-bold">CalmQuest</p>
@@ -81,10 +84,8 @@ const Signup = () => {
           </p>
         </div>
       </main>
-    </div>  
-     )
-     
-}
+    </div>
+  );
+};
 
-
-export default Signup
+export default Signup;
