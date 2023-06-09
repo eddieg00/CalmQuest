@@ -7,7 +7,7 @@ const HealthResourceList = ({ handleResourceClick }) => {
   const [healthResources, setHealthResources] = useState([]);
   const [search, setSearch] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [selectedResource, setSelectedResource] = useState(null); // New state for storing the selected resource
+  const [selectedResource, setSelectedResource] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +33,6 @@ const HealthResourceList = ({ handleResourceClick }) => {
     setShowModal(true);
     const resource = await fetchHealthResourceById(id);
     setSelectedResource(resource); 
-    // Once data is fetched, set loading state to false
     setLoading(false);
   };
 
@@ -57,9 +56,9 @@ const HealthResourceList = ({ handleResourceClick }) => {
         value={search}
         onChange={handleSearch}
       />
-      <ul className="text-left">
+      <ul className="text-left ">
         {filteredResources.map((resource) => (
-          <li key={resource.id} className="mb-2">
+          <li key={resource.id} className="mb-2 hover:bg-gray-200 rounded">
             {staticResources.some((staticResource) => staticResource.id === resource.id) ? (
               <button
                 className="w-full text-left"
@@ -80,14 +79,15 @@ const HealthResourceList = ({ handleResourceClick }) => {
       </ul>
       <Modal show={showModal} handleClose={() => setShowModal(false)}>
         {loading ? (
-            <p className="p-4 text-center text-gray-700">Loading...</p> // Show loading text while data is being fetched
+            <p className="p-4 text-center text-gray-700">Loading...</p>
         ) : (
             <div className="p-4 bg-white text-gray-800 rounded shadow">
-            <h3 className="text-2xl font-semibold mb-2">{selectedResource?.Result.Resources.Resource[0].Title}</h3>
-            <div className="prose" dangerouslySetInnerHTML={{ __html: selectedResource?.Result.Resources.Resource[0].Sections.section[0].Content }}/>
+            <h3 className="text-3xl text-center font-semibold mb-4 bg-gray-100 p-2 rounded">{selectedResource?.Result.Resources.Resource[0].Title}</h3>
+            
+            <div className="prose prose-blue " dangerouslySetInnerHTML={{ __html: selectedResource?.Result.Resources.Resource[0].Sections.section[0].Content }}/>
             </div>
         )}
-       </Modal>
+      </Modal>
     </div>
   );
 };
