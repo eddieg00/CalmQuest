@@ -9,6 +9,11 @@ export const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [healthResources, setHealthResources] = useState([]);
   const [search, setSearch] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   useEffect(() => {
     const fetchQuote = async () => {
@@ -62,32 +67,35 @@ export const Home = () => {
   };
 
   return (
-    <body className="flex flex-col w-screen min-h-screen bg-gradient-to-t from-green-300 via-blue-500 to-purple-600">
-      <div className="flex flex-grow">
-        <div className="bg-white w-3/10 p-8 flex flex-col justify-between h-screen">
+    <div className="flex flex-col w-screen min-h-screen bg-gradient-to-t from-green-300 via-blue-500 to-purple-600">
+      <div className="flex flex-col sm:flex-row">
+        <div className="bg-white w-full sm:w-2/12 p-8 flex flex-col justify-between h-screen">
           <div>
             <h2 className="text-3xl mb-4 text-emerald-400 font-nexa font-bold">CalmQuest</h2>
-            <button className="rounded-2xl m-2 text-white bg-blue-400 w-2/5 px-2 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in" 
-                onClick={openModal}>Profile
+            <button
+              className="rounded-2xl m-2 text-white bg-blue-400 w-2/5 px-2 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in"
+              onClick={openModal}
+            >
+              Profile
             </button>
-              <div className='flex'>
-              <HealthResourceList 
-                healthResources={healthResources} 
+            <div className='flex'>
+              <HealthResourceList
+                healthResources={healthResources}
                 handleResourceClick={handleResourceClick}
                 handleManageAnxiety={handleManageAnxiety}
                 handleKeepHeartHealthy={handleKeepHeartHealthy}
                 handleGetEnoughSleep={handleGetEnoughSleep}
                 handleGetActive={handleGetActive}
                 handleChoosingDoctor={handleChoosingDoctor}
-                search={search} 
+                search={search}
                 handleSearch={handleSearch}
               />
-              </div>
+            </div>
           </div>
           <p>Logout</p>
         </div>
 
-        <div className="w-full w-7/10 flex flex-col items-start justify-start p-8">
+        <div className="w-full sm:w-7/10 flex flex-col items-start justify-start p-8">
           <div className="bg-white rounded-lg shadow p-8 w-full overflow-auto mb-6">
             <h1 className="text-4xl mb-4 text-center">Welcome to <span className="font-nexa font-bold text-emerald-400">CalmQuest</span></h1>
             <p className="text-2xl text-center justify-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Daily Quests:</p>
@@ -96,7 +104,7 @@ export const Home = () => {
           <div className=" w-full p-8 bg-white rounded-lg shadow">
             <p className="text-2xl text-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Today's Affirming Quote:</p>
             <p className="font-nexa font-ultralight text-3xl italic text-center ">
-                {quoteData.quote ? `“${quoteData.quote}” - ${quoteData.author}` : 'Loading...'}
+              {quoteData.quote ? `“${quoteData.quote}” - ${quoteData.author}` : 'Loading...'}
             </p>
           </div>
         </div>
@@ -116,11 +124,11 @@ export const Home = () => {
             background: 'rgba(0, 0, 0, 0.5)',
           }}
         >
-          <section
+          <div
             style={{ fontFamily: 'Montserrat' }}
             className="bg-grey-400 flex font-medium items-center justify-center h-screen"
           >
-            <section className="w-64 mx-auto bg-teal-700 rounded-2xl px-8 py-6 shadow-lg">
+            <div className="w-64 mx-auto bg-teal-700 rounded-2xl px-8 py-6 shadow-lg">
               <div className="flex items-center justify-between">
                 <span className="text-white">
                   <svg
@@ -162,11 +170,11 @@ export const Home = () => {
               >
                 Close
               </button>
-            </section>
-          </section>
+            </div>
+          </div>
         </div>
       )}
-    </body>
+    </div>
   );
 };
 
