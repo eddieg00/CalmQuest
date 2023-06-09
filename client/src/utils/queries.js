@@ -38,4 +38,15 @@ query getTasks {
         completed
     }
 }
+`
+
+
+export const SAVE_TASK = gql`
+  mutation SaveTask($userId: ID!, $taskId: ID!) {
+    saveTask(userId: $userId, taskId: $taskId) {
+      _id
+      task
+      completed
+    }
+  }
 `;

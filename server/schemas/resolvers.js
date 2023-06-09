@@ -23,6 +23,30 @@ const resolvers = {
       throw new AuthenticationError("You need to log in");
     },
 
+    saveTask: async (_, { userId, taskId }) => {
+      try {
+        // Find the user by ID
+        const user = await User.findById(userId);
+
+        // Find the task by ID
+        //const task = await Task.findById(taskId);
+
+        // Update the user's tasks array with the new task
+        user.tasks.push(taskId);
+
+        // Increment the completedTasks count
+        user.completedTasks += 1;
+
+        // Save the updated user document
+        const savedUser = await user.save();
+
+        return savedUser;
+      } catch (error) {
+        console.error('Error saving task:', error);
+        throw new Error('Failed to save task');
+      }
+    }
+
     //easier on frontend to filter out tasks
     /* randomTask: async (parent, args, context) => {
       if (context.user) {
