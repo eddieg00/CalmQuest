@@ -21,6 +21,7 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to log in");
     },
+    
     getTasks: async (parent, args, context) => {
       if (context.user) {
         const userAccount = User.findOne({ _id: context.user._id });
@@ -64,14 +65,14 @@ const resolvers = {
 
     //find user by email
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+       const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError("No user with this email");
       }
 
       //checks is password is correct
-      const correctPassword = await user.comparePasswords(password);
+      const correctPassword = await user.isCorrectPassword(password);
 
       if (!correctPassword) {
         throw new AuthenticationError("Incorrect password");
@@ -79,7 +80,8 @@ const resolvers = {
 
       //generate toke for the user and returns user and token
       const token = signToken(user);
-      return { token, user };
+      return { token, user }; 
+      console.log(email, password) 
     },
 
     /* completeTask: async (parent, { taskId }, context) => {
