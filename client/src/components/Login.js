@@ -5,7 +5,7 @@ import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 const Login = () => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: "", password: "" });
   const [login] = useMutation(LOGIN_USER);
 
   const handleChange = (event) => {
@@ -14,15 +14,14 @@ const Login = () => {
       ...formState,
       [name]: value,
     });
-  }; 
+  };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     //console.log(formState)
     try {
       const { data } = await login({
-        variables: { ...formState }
-       
+        variables: { ...formState },
       });
 
       //console.log(formState)
@@ -67,8 +66,9 @@ const Login = () => {
           </button>
         </div>
         <div className="inline-block border-[1px] justify-center w-20 border-blue-400 border-solid"></div>
-        <p className="text-blue-400 mt-4 text-sm">Don't have an account?</p>
-        {/*  <p className='text-blue-400 mb-4 text-sm font-medium cursor-pointer' onClick={() => setIsLogin(false)}>Create a New Account?</p> */}
+        <p className="text-blue-400 mb-4 text-sm font-medium cursor-pointer">
+          <a href="/signup">Create a New Account?</a>
+        </p>
       </form>
     </div>
   );
