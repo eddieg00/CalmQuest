@@ -11,10 +11,10 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-/*   context: authMiddleware, */
+  context: authMiddleware,
 });
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 if (process.env.NODE_ENV === 'production') {
@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 });
 
 
-// Create a new instance of an Apollo server with the GraphQL schema
+
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
   server.applyMiddleware({ app });

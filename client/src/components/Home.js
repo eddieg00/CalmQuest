@@ -5,6 +5,7 @@ import { fetchHealthResources } from '../api/HealthApi';
 import HealthResourceList from './healthResourceList';
 /* import { useQuery } from '@apollo/client';
 import { ME } from "../utils/queries"; */
+import Auth from "../utils/auth"
 
 export const Home = () => {
   const [quoteData, setQuoteData] = useState({ quote: '', author: '' });
@@ -89,7 +90,11 @@ export const Home = () => {
               />
               </div>
           </div>
-          <p>Logout</p>
+          <p>
+          <a href="/login" onClick={() => Auth.logout()}>
+              Logout
+            </a>
+          </p>
         </div>
 
         <div className="w-full w-7/10 flex flex-col items-start justify-start p-8">
