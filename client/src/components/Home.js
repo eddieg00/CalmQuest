@@ -41,26 +41,6 @@ export const Home = () => {
     console.log(resource);
   };
 
-  const handleManageAnxiety = () => {
-    console.log("Manage Anxiety Clicked");
-  };
-
-  const handleKeepHeartHealthy = () => {
-    console.log("Keep Heart Healthy Clicked");
-  };
-
-  const handleGetEnoughSleep = () => {
-    console.log("Get Enough Sleep Clicked");
-  };
-
-  const handleGetActive = () => {
-    console.log("Get Active Clicked");
-  };
-
-  const handleChoosingDoctor = () => {
-    console.log("Choosing a Doctor Clicked");
-  };
-
   return (
     <body className="flex flex-col w-screen min-h-screen bg-gradient-to-t from-green-300 via-blue-500 to-purple-600">
       <div className="flex flex-grow">
@@ -74,11 +54,6 @@ export const Home = () => {
               <HealthResourceList 
                 healthResources={healthResources} 
                 handleResourceClick={handleResourceClick}
-                handleManageAnxiety={handleManageAnxiety}
-                handleKeepHeartHealthy={handleKeepHeartHealthy}
-                handleGetEnoughSleep={handleGetEnoughSleep}
-                handleGetActive={handleGetActive}
-                handleChoosingDoctor={handleChoosingDoctor}
                 search={search} 
                 handleSearch={handleSearch}
               />
