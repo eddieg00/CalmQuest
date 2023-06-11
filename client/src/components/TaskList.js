@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TaskItem from './TaskItem';
+//import { useQuery } from '@apollo/client';
 import ConfettiAnimation from './ConfettiAnimation';
 // USE useQuery TO GET TASKS AND DISPLAY DATA TO THE MAPPED RETURN
 //import { useQuery } from '@apollo/client';
