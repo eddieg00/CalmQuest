@@ -69,6 +69,23 @@ const TaskItem = ({ task, index, checkedTasks, setCheckedTasks }) => {
           )}
         </div>
       </button>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .relative {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .text-left {
+            text-align: center;
+          }
+          .ml-4 {
+            margin-left: 0;
+            margin-right: 0;
+          }
+        }
+      `}</style>
     </li>
   );
 };
