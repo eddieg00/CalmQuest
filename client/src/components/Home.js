@@ -6,10 +6,12 @@ import HealthResourceList from "./healthResourceList";
 //import { useQuery } from '@apollo/client';
 //import { ME } from "../utils/queries";
 import Auth from "../utils/auth";
+import { useNavigate } from "react-router-dom";
 
 const logged = Auth.getToken();
 
 export const Home = () => {
+  const navigate = useNavigate();
   const [quoteData, setQuoteData] = useState({ quote: "", author: "" });
   const [modalOpen, setModalOpen] = useState(false);
   const [healthResources, setHealthResources] = useState([]);
@@ -67,10 +69,15 @@ export const Home = () => {
   const handleChoosingDoctor = () => {
     console.log("Choosing a Doctor Clicked");
   };
-
+  useEffect(() => {
+    if (!logged) {
+      navigate("/login");
+    }
+  }, [navigate]);
   
   return (
     <>
+    
       {logged ? (
         <div className="flex flex-col w-screen min-h-screen bg-gradient-to-t from-green-300 via-blue-500 to-purple-600">
           <div className="flex flex-grow">
