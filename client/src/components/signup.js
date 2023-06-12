@@ -42,12 +42,12 @@ const Signup = () => {
     <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen md:py-2">
       <main className="flex items-center w-full px-2 md:px-20">
         <div className="hidden md:inline-flex flex-col flex-1 space-y-1">
-          <p className="text-6xl text-blue-500 font-bold">CalmQuest</p>
-          <p className="font-medium text-lg leading-1 text-emerald-400">
+          <p className="text-6xl text-emerald-500 font-bold">CalmQuest</p>
+          <p className="font-medium text-lg leading-1 text-blue-400">
             CalmQuest your life today!
           </p>
         </div>
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4 text-center">
           <h2 className="text-3xl font-bold">Create Account!</h2>
           <form onSubmit={handleFormSubmit}>
             <input
