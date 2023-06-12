@@ -2,9 +2,9 @@ import Confetti from 'react-dom-confetti';
 
 const ConfettiConfig = {
   angle: 90,
-  spread: 360,
+  spread: 1000,
   startVelocity: 20,
-  elementCount: 70,
+  elementCount: 1000,
   dragFriction: 0.12,
   duration: 3000,
   stagger: 3,
