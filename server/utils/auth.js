@@ -4,32 +4,31 @@ const secret = "secret";
 const expiration = "1h";
 
 module.exports = {
-  authMiddleware: function ({ req }) {
+  authMiddleware: async function ({ req }) {
     let token = req.body.token || req.query.token || req.headers.authorization;
 
     if (req.headers.authorization) {
-      token = token.split(" ").pop.trim();
+      token = token.split(" ").pop().trim();
     }
-
+    console.log(token)
     //if no token found, request object as is
     if (!token) {
-      return req;
+      console.log("No token provided");
     }
 
     //set user on request object with data taken from token
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
+      return data;
     } catch {
-      console.log("No good");
+      console.log("Invalid token");
     }
-
-    return req;
   },
 
   //create payload containing user data and signs payload with a secret key and expiration
-  signToken: function ({ email, name, _id }) {
-    const payload = { email, name, _id };
+  signToken: function ({ name, email, _id }) {
+    const payload = { name, email, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };

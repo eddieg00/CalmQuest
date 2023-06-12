@@ -4,46 +4,32 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-const Login = (mid) => {
-  
-  // state to manage the form input
+const Login = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
-  
-  // handle login mutation
   const [login] = useMutation(LOGIN_USER);
 
-  // handles input chanes and updates form
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
       [name]: value,
     });
   };
 
-  
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    //console.log(formState)
     try {
-      
-      // perform login mutation with formstate values
       const { data } = await login({
         variables: { ...formState },
       });
-      
-      // logs in user by receiving toke from localstorage
-      Auth.login(data.login.token);
-    } catch (err) {
-      console.error(err);
-    }
 
-    // clear form input 
-    setFormState({
-      email: "",
-      password: "",
-    });
+      //console.log(formState)
+      Auth.login(data.login.token);
+      //console.log(data)
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <div className="bg-white rounded-2xl shadow-2xl flex flex-col w-full md:w-1/3 items-center max-w-4xl transition duration-1000 ease-out">
@@ -55,10 +41,11 @@ const Login = (mid) => {
       <div className="flex space-x-2 m-4 items-center justify-center"></div>
       {/* Inputs */}
 
-      <form action={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <div className="flex flex-col items-center justify-center">
           <input
             type="email"
+            name="email"
             value={formState.email}
             onChange={handleChange}
             className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
@@ -67,6 +54,7 @@ const Login = (mid) => {
           ></input>
           <input
             type="password"
+            name="password"
             value={formState.password}
             onChange={handleChange}
             className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-blue-400 m-1 focus:shadow-md focus:border-emerald
@@ -78,8 +66,9 @@ const Login = (mid) => {
           </button>
         </div>
         <div className="inline-block border-[1px] justify-center w-20 border-blue-400 border-solid"></div>
-        <p className="text-blue-400 mt-4 text-sm">Don't have an account?</p>
-        {/*  <p className='text-blue-400 mb-4 text-sm font-medium cursor-pointer' onClick={() => setIsLogin(false)}>Create a New Account?</p> */}
+        <p className="text-blue-400 mb-4 text-sm font-medium cursor-pointer">
+          <a href="/signup">Create a New Account?</a>
+        </p>
       </form>
     </div>
   );

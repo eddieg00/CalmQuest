@@ -20,11 +20,11 @@ query users {
 export const ME = gql`
 query me {
     me {
-        _id
+        id
         name
         email
         tasks {
-            _id
+            id
             task
             completed
             trait

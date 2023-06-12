@@ -21,7 +21,8 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to log in");
     },
-    getTasks: async (context) => {
+    
+    getTasks: async (parent, args, context) => {
       if (context.user) {
         const userAccount = User.findOne({ _id: context.user._id });
         return userAccount.tasks
@@ -78,23 +79,24 @@ const resolvers = {
 
   Mutation: {
     //create new user with name,email,password and generates token
-    addUser: async (parent, { name, email, password }) => {
-      const user = await User.create({ name, email, password });
+    addUser: async (parent, args) => {
+      const user = await User.create( args );
       const token = signToken(user);
 
-      return { token, user };
+      return { token, user }; 
+      console.log(args)
     },
 
     //find user by email
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+       const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError("No user with this email");
       }
 
       //checks is password is correct
-      const correctPassword = await user.comparePasswords(password);
+      const correctPassword = await user.isCorrectPassword(password);
 
       if (!correctPassword) {
         throw new AuthenticationError("Incorrect password");
@@ -102,7 +104,8 @@ const resolvers = {
 
       //generate toke for the user and returns user and token
       const token = signToken(user);
-      return { token, user };
+      return { token, user }; 
+      console.log(email, password) 
     },
 
     /* completeTask: async (parent, { taskId }, context) => {
