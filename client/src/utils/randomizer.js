@@ -1,14 +1,23 @@
 function random(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array;
+  // Create a new array by spreading the elements of the input array
+  const shuffledArray = [...array];
+
+  // Iterate over the array elements starting from the last element
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    
+    // Generate a random index from 0 to i (inclusive)
+    const j = Math.floor(Math.random() * (i + 1));
+    
+    // Swap the elements at indices i and j using destructuring assignment
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
   }
-  
-  module.exports = {
-    random
-  };
+
+  return shuffledArray;
+}
+
+module.exports = {
+  random
+};
+
+
   

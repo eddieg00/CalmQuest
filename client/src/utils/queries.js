@@ -32,18 +32,13 @@ query me {
     }
 }
 `
+
 export const GET_TASKS = gql`
-query getTasks {
-    me {
-        _id
-        name
-        email
-        tasks {
-            _id
-            task
-            completed
-            trait
-        }
+query Tasks {
+    tasks {
+      _id
+      task
+      completed
     }
-}
-`;
+  }
+  `

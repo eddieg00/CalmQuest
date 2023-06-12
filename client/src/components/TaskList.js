@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
 import TaskItem from './TaskItem';
-//import { useQuery } from '@apollo/client';
 import ConfettiAnimation from './ConfettiAnimation';
-// USE useQuery TO GET TASKS AND DISPLAY DATA TO THE MAPPED RETURN
-//import { useQuery } from '@apollo/client';
-//import {GET_TASKS} from "../utils/queries"
-//const { radnom } = require('../utils/randomizer')
-
-
+import { useQuery } from '@apollo/client';
+import { GET_TASKS } from "../utils/queries";
+const { random } = require('../utils/randomizer');
 
 const TaskList = () => {
-  const tasks = ['Message Loved Ones', 'Make Your Bed', 'Take a Walk', 'Breathing Exercise'];
-  //const { data } = useQuery(GET_TASKS)
-  //const tasks = data.tasks;
-  //const randomTasks = random(tasks)
-  const [checkedTasks, setCheckedTasks] = useState(Array(tasks.length).fill(false));
-  
+  const { data } = useQuery(GET_TASKS);
+  const [checkedTasks, setCheckedTasks] = useState([]);
+
+  const tasks = data?.tasks ? random(data.tasks).slice(0, 4) : [];
+
+
   return (
     <ul className="mb-6 mx-auto w-1/2">
       <ConfettiAnimation allTasksDone={checkedTasks.every(Boolean)} />
+
       {tasks.map((task, index) => (
         <TaskItem 
           key={index} 
-          task={task} 
+          task={task.task} // Pass the task's "task" property to TaskItem component
           index={index} 
           checkedTasks={checkedTasks} 
           setCheckedTasks={setCheckedTasks} 
