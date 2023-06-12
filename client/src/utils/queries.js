@@ -50,8 +50,8 @@ query getTasks {
 
 
 export const SAVE_TASK = gql`
-  mutation SaveTask($userId: ID!, $taskId: ID!) {
-    saveTask(userId: $userId, taskId: $taskId) {
+  mutation SaveTask($userid: String!, $taskid: String!) {
+    saveTask(userid: $userid, taskid: $taskid) {
       _id
       task
       completed

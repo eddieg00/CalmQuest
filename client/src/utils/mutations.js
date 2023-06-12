@@ -20,6 +20,7 @@ mutation AddUser($name: String!, $password: String!, $email: String!) {
       name
     }
   }
+}
 `
 
 ;

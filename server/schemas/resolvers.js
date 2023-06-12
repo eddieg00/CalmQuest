@@ -29,17 +29,19 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to log in")
     },
+    
 
-    saveTask: async (_, { userId, taskId }) => {
+    saveTask: async (_, { userid, taskid }) => {
       try {
         // Find the user by ID
-        const user = await User.findById(userId);
+        const user = await User.findById(userid);
+        console.log (userid,taskid)
 
         // Find the task by ID
         //const task = await Task.findById(taskId);
 
         // Update the user's tasks array with the new task
-        user.tasks.push(taskId);
+        user.tasks.push(taskid);
 
         // Increment the completedTasks count
         user.completedTasks += 1;
