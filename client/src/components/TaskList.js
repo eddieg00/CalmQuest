@@ -11,11 +11,27 @@ const TaskList = () => {
   const [checkedTasks, setCheckedTasks] = useState([]);
 
   useEffect(() => {
-    if (data?.tasks) {
-      const randomTasks = random(data.tasks).slice(0, 4);
-      setTasks(randomTasks);
-      // Initialize checkedTasks with the same length as tasks, all values set to false
-      setCheckedTasks(new Array(randomTasks.length).fill(false));
+    // Load tasks and their check status from localStorage
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    const storedCheckedTasks = JSON.parse(localStorage.getItem('checkedTasks'));
+    const storedDate = localStorage.getItem('date');
+
+    // Generate new tasks if there are no stored tasks or if the date has changed
+    const today = new Date().toDateString();
+    if (!storedTasks || !storedCheckedTasks || storedDate !== today) {
+      if (data?.tasks) {
+        const randomTasks = random(data.tasks).slice(0, 4);
+        setTasks(randomTasks);
+        setCheckedTasks(new Array(randomTasks.length).fill(false));
+        // Save tasks and their check status in localStorage
+        localStorage.setItem('tasks', JSON.stringify(randomTasks));
+        localStorage.setItem('checkedTasks', JSON.stringify(new Array(randomTasks.length).fill(false)));
+        localStorage.setItem('date', today);
+      }
+    } else {
+      // Use stored tasks and their check status
+      setTasks(storedTasks);
+      setCheckedTasks(storedCheckedTasks);
     }
   }, [data]);
 

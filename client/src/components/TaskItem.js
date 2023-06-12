@@ -42,6 +42,7 @@ const TaskItem = ({ task, index, checkedTasks, setCheckedTasks }) => {
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        disabled={checkedTasks[index]} // Disable the button if the task is already checked
         className={`relative overflow-hidden font-mono text-2xl text-left w-full py-2 rounded shadow transition-colors duration-300 border border-black ${
           checkedTasks[index] ? 'bg-green-300' : 'hover:bg-stone-200'
         } transform transition-transform duration-200 ease-in-out hover:scale-105`}
