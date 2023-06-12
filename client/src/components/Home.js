@@ -71,7 +71,7 @@ export const Home = () => {
   };
   useEffect(() => {
     if (!logged) {
-      navigate("/login");
+      navigate.push("/login");
     }
   }, [navigate]);
   
