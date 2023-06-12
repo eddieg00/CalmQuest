@@ -47,7 +47,7 @@ const Signup = () => {
             CalmQuest your life today!
           </p>
         </div>
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4 text-center">
           <h2 className="text-3xl font-bold">Create Account!</h2>
           <form onSubmit={handleFormSubmit}>
             <input
