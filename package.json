@@ -1,0 +1,27 @@
+{
+  "name": "calmquest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^8.1.0",
+    "postcss": "^8.4.24",
+    "react-helmet": "^6.1.0",
+    "mesh-gradient.js": "^0.0.5",
+    "react-script-tag": "^1.1.2"
+  }
+}
