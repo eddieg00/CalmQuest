@@ -1,12 +1,54 @@
 [
     {
-        "task": "Practice deep breathing for 10 minutes"
+        "task": "Practice deep breathing"
     },
     {
         "task": "Go for a walk"
     },
     {
         "task": "Pet a puppy"
+    },
+    {
+        "task": "Read for 20 minutes"
+    },
+    {
+        "task": "Get some fresh air"
+    },
+    {
+        "task": "Make your bed"
+    },
+    {
+        "task": "Listen to your favorite song"
+    },
+    {
+        "task": "Do a random act of kindness"
+    },
+    {
+        "task": "Write down how you are feeling today"
+    },
+    {
+        "task": "Practice a hobby"
+    },
+    {
+        "task": "Write down three things you are grateful for"
+    },
+    {
+        "task": "Say something nice to yourself"
+    },
+    {
+        "task": "Solve a puzzle"
+    },
+    {
+        "task": "Connect with a friend"
+    },
+    {
+        "task": "Watch a funny tv show"
+    },
+    {
+        "task": "Take a break"
+    },
+    {
+        "task": "Cook a favorite meal"
     }
 
 ]
