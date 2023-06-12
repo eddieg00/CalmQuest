@@ -24,15 +24,11 @@ Calm Quest is a mental health Wwebsite that aims to promote better habits and su
 5. Open your browser and go to `http://localhost:3001`
 
 ## Usage
-* Creating Posts
+* To have full access
   * You must be logged in to create a post
-  * Once you are logged in, navigate to your Profile from the navigation bar where you can put in the track title, album, and artist and your post description where you can write your opinion on the song, express your thoughts on its lyrics, melody, rhythm, or any other aspect that stands out to you.
-  * Please note that your log-in session will be logged out after 10 minutes of no activity.
-
-* Commenting on Posts
-  * We encourage users to engage with each other by leaving comments on posts! 
-  * To comment on a post, simply click on a post your'd like to comment on and use the comment text box to share your thoughts and opinions, discuss the music with other users, and learn from different perspectives. Once you've got your comment written, press post comment.
-
+  * Once you are logged in, you will be able to keep track of your own tasks and your progress will be saved for the next time you login.
+  * Please note that your log-in session will be logged out after 1 hour of no activity.
+  * You will also have access to all the resources for finding proffesional help as well.
 ## Deployment
 Live URL: <a href="https://">Calm Quest</a>  
 
@@ -58,17 +54,17 @@ This project is licensed under the MIT license. For more information about this 
 
 ## Developers
 
-<li><strong><a href="https://github.com/DylanCaff" target="__blank">Dylan Cafferatta</a>:</strong> Dev</li>
+<li><strong><a href="https://github.com/DylanCaff" target="__blank">Dylan Cafferatta</a>:</strong> Front End Developer</li>
 
-<li><strong><a href="https://github.com/HunterWilson1" target="__blank">Hunter Wilson</a>:</strong> Dev</li>
+<li><strong><a href="https://github.com/HunterWilson1" target="__blank">Hunter Wilson</a>:</strong> Back End Developer</li>
 
-<li><strong><a href="https://github.com/MichaelMees99" target="__blank">Michael Mees</a>:</strong> Dev</li>
+<li><strong><a href="https://github.com/MichaelMees99" target="__blank">Michael Mees</a>:</strong> Front End Developer</li>
 
-<li><strong><a href="https://github.com/imanmogh" target="__blank">Iman Moghaddas</a>:</strong> Dev</li>
+<li><strong><a href="https://github.com/imanmogh" target="__blank">Iman Moghaddas</a>:</strong> Back End Developer</li>
 
-<li><strong><a href="https://github.com/eddieg00 " target="__blank">Edward Gutierrez</a>:</strong> Dev</li>
+<li><strong><a href="https://github.com/eddieg00 " target="__blank">Edward Gutierrez</a>:</strong> Back End Developer</li>
 
-<li><strong><a href="https://github.com/Minthare" target="__blank">Joshua Pierre</a>:</strong> Dev</li>
+<li><strong><a href="https://github.com/Minthare" target="__blank">Joshua Pierre</a>:</strong> Back End Develolper</li>
 
 
 
