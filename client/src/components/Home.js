@@ -5,7 +5,7 @@ import { fetchHealthResources } from '../api/HealthApi';
 import HealthResourceList from './healthResourceList';
 import MeshGradient from 'mesh-gradient.js';
 
-const COLORS = ["#eb75b6", "#ddf3ff", "#6e3deb", "#c92f3c"];
+const COLORS = ["#22C96B ", "#22C9AA", "#22AAC9", "#7422C9"];
 
 export const Home = () => {
   const [quoteData, setQuoteData] = useState({ quote: '', author: '' });
@@ -60,7 +60,7 @@ export const Home = () => {
       <div className="flex flex-grow relative">
         <div className="bg-white w-3/10 p-8 flex flex-col justify-between h-screen">
           <div>
-            <h2 className="text-3xl mb-4 text-emerald-400 font-nexa font-bold">CalmQuest</h2>
+            <h2 className="text-3xl mb-4 text-emerald-500 font-nexa font-bold">CalmQuest</h2>
             <button className="rounded-2xl m-2 text-white bg-blue-400 w-2/5 px-2 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in" 
                 onClick={openModal}>Profile
             </button>
@@ -78,7 +78,7 @@ export const Home = () => {
 
         <div className="w-full w-7/10 flex flex-col items-start justify-start p-8">
           <div className="bg-white bg-opacity-80  rounded-lg shadow p-8 w-full overflow-auto mb-6">
-            <h1 className="text-4xl mb-4 text-center">Welcome to <span className="text-5xl font-nexa font-bold text-emerald-400">CalmQuest</span></h1>
+            <h1 className="text-4xl mb-4 text-center">Welcome to <span className="text-5xl font-nexa font-bold text-emerald-500">CalmQuest</span></h1>
             <p className="text-2xl text-center justify-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Daily Quests:</p>
             
               <TaskList />
