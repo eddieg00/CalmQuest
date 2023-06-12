@@ -74,7 +74,7 @@ export const Home = () => {
         <div className="flex flex-col w-screen min-h-screen relative">
           <canvas id="my-canvas" ref={canvasRef} className="w-full h-full absolute top-0 left-0" />
           <div className="flex flex-col lg:flex-row flex-grow relative">
-            <div className="bg-white w-full lg:w-2/12 p-4 lg:p-8 flex flex-col justify-between h-screen">
+            <div className="bg-white w-full lg:w-2/12 p-4 lg:p-8 flex flex-col justify-between max-h-screen overflow-y-auto lg:h-auto">
               <div>
                 <h2 className="text-2xl lg:text-3xl mb-4 text-emerald-500 font-nexa font-bold">CalmQuest</h2>
                 <div className='flex flex-col lg:flex-row'>
