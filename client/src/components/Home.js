@@ -19,6 +19,7 @@ export const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [healthResources, setHealthResources] = useState([]);
   const [search, setSearch] = useState("");
+  const [profileOpen, setProfileOpen] = useState(false); // State for profile modal
 
   //const { data } = useQuery(ME);
 
@@ -68,6 +69,14 @@ export const Home = () => {
     }
   }, [navigate]);
 
+  const openProfileModal = () => {
+    setProfileOpen(true);
+  };
+
+  const closeProfileModal = () => {
+    setProfileOpen(false);
+  };
+
   return (
     <>
       {logged ? (
@@ -77,6 +86,7 @@ export const Home = () => {
             <div className="bg-white w-full lg:w-2/12 p-4 lg:p-8 flex flex-col justify-between max-h-screen overflow-y-auto lg:h-auto">
               <div>
                 <h2 className="text-2xl lg:text-3xl mb-4 text-emerald-500 font-nexa font-bold">CalmQuest</h2>
+                <button className="text-sm text-emerald-500 mt-4" onClick={openProfileModal}>Profile</button> {/* Profile Button */}
                 <div className='flex flex-col lg:flex-row'>
                   <HealthResourceList healthResources={healthResources} handleResourceClick={handleResourceClick} search={search} handleSearch={handleSearch}/>
                 </div>
@@ -87,12 +97,12 @@ export const Home = () => {
                 </a>
               </p>
             </div>
-  
+
             <div className="w-full lg:w-10/12 p-4 lg:p-8 flex flex-col items-start justify-start">
               <div className="bg-white bg-opacity-80  rounded-lg shadow p-4 lg:p-8 w-full overflow-auto mb-6">
                 <h1 className="text-2xl lg:text-4xl mb-4 text-center">Welcome to <span className="text-3xl lg:text-5xl font-nexa font-bold text-emerald-500">CalmQuest</span></h1>
                 <p className="text-xl lg:text-2xl text-center justify-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Daily Quests:</p>
-  
+
                 <TaskList />
               </div>
               <div className=" w-full p-4 lg:p-8 bg-opacity-80  bg-white rounded-lg shadow">
@@ -103,7 +113,7 @@ export const Home = () => {
               </div>
             </div>
           </div>
-  
+
           {modalOpen && (
             <div
               style={{
@@ -122,6 +132,25 @@ export const Home = () => {
                 <a href="/login" onClick={() => Auth.logout()}>Logout</a>
               </p>
             </div>
+          )}
+
+          {profileOpen && (
+            <div className="fixed inset-0 flex items-center justify-center backdrop-filter backdrop-blur-sm bg-opacity-50">
+            <div className="fixed top-[50%] left-[50%] w-72 h-72 bg-white rounded-md flex flex-col items-center justify-between p-4 shadow-lg transform translate-x-[-50%] translate-y-[-50%]">
+              <h3 className="mb-4 text-lg font-nexa font-ultralight">Profile</h3>
+              <div className="w-full h-2 bg-gray-300 rounded">
+                <div className="h-full bg-green-500 rounded" style={{ width: '60%' }}></div>
+              </div>
+              <p className="mt-2">Task Progress: 60%</p>
+              <p>Name: John Doe</p>
+              <button
+                className="bg-green-500 text-white rounded-md px-4 py-2 mt-4"
+                onClick={closeProfileModal}
+              >
+                Close
+              </button>
+            </div>
+          </div>
           )}
         </div>
       ) : null}
