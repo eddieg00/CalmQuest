@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.9",
-    "concurrently": "^8.1.0"
+    "concurrently": "^8.1.0",
+    "mesh-gradient.js": "^0.0.5",
+    "react-script-tag": "^1.1.2"
   }
 }

@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getZenQuote } from '../api/quoteApi';
 import TaskList from './TaskList';
 import { fetchHealthResources } from '../api/HealthApi';
 import HealthResourceList from './healthResourceList';
+import MeshGradient from 'mesh-gradient.js';
+
+const COLORS = ["#eb75b6", "#ddf3ff", "#6e3deb", "#c92f3c"];
 
 export const Home = () => {
   const [quoteData, setQuoteData] = useState({ quote: '', author: '' });
   const [modalOpen, setModalOpen] = useState(false);
   const [healthResources, setHealthResources] = useState([]);
   const [search, setSearch] = useState('');
+
+  const canvasRef = useRef(null);
+  const gradient = useRef(new MeshGradient());
 
   useEffect(() => {
     const fetchQuote = async () => {
@@ -23,6 +29,13 @@ export const Home = () => {
 
     fetchQuote();
     loadResources();
+  }, []);
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      gradient.current.initGradient(`#${canvasRef.current.id}`, COLORS);
+      gradient.current.changePosition(780);
+    }
   }, []);
 
   const openModal = () => {
@@ -41,59 +54,37 @@ export const Home = () => {
     console.log(resource);
   };
 
-  const handleManageAnxiety = () => {
-    console.log("Manage Anxiety Clicked");
-  };
-
-  const handleKeepHeartHealthy = () => {
-    console.log("Keep Heart Healthy Clicked");
-  };
-
-  const handleGetEnoughSleep = () => {
-    console.log("Get Enough Sleep Clicked");
-  };
-
-  const handleGetActive = () => {
-    console.log("Get Active Clicked");
-  };
-
-  const handleChoosingDoctor = () => {
-    console.log("Choosing a Doctor Clicked");
-  };
-
   return (
-    <body className="flex flex-col w-screen min-h-screen bg-gradient-to-t from-green-300 via-blue-500 to-purple-600">
-      <div className="flex flex-grow">
+    <div className="flex flex-col w-screen min-h-screen relative">
+      <canvas id="my-canvas" ref={canvasRef} className="w-full h-full absolute top-0 left-0" />
+      <div className="flex flex-grow relative">
         <div className="bg-white w-3/10 p-8 flex flex-col justify-between h-screen">
           <div>
             <h2 className="text-3xl mb-4 text-emerald-400 font-nexa font-bold">CalmQuest</h2>
             <button className="rounded-2xl m-2 text-white bg-blue-400 w-2/5 px-2 py-2 shadow-md hover:text-blue-400 hover:bg-white transition duration-200 ease-in" 
                 onClick={openModal}>Profile
             </button>
-              <div className='flex'>
+            <div className='flex'>
               <HealthResourceList 
                 healthResources={healthResources} 
                 handleResourceClick={handleResourceClick}
-                handleManageAnxiety={handleManageAnxiety}
-                handleKeepHeartHealthy={handleKeepHeartHealthy}
-                handleGetEnoughSleep={handleGetEnoughSleep}
-                handleGetActive={handleGetActive}
-                handleChoosingDoctor={handleChoosingDoctor}
                 search={search} 
                 handleSearch={handleSearch}
               />
-              </div>
+            </div>
           </div>
-          <p>Logout</p>
+          <p button>Logout</p>
         </div>
 
         <div className="w-full w-7/10 flex flex-col items-start justify-start p-8">
-          <div className="bg-white rounded-lg shadow p-8 w-full overflow-auto mb-6">
-            <h1 className="text-4xl mb-4 text-center">Welcome to <span className="font-nexa font-bold text-emerald-400">CalmQuest</span></h1>
+          <div className="bg-white bg-opacity-80  rounded-lg shadow p-8 w-full overflow-auto mb-6">
+            <h1 className="text-4xl mb-4 text-center">Welcome to <span className="text-5xl font-nexa font-bold text-emerald-400">CalmQuest</span></h1>
             <p className="text-2xl text-center justify-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Daily Quests:</p>
-            <TaskList />
+            
+              <TaskList />
+
           </div>
-          <div className=" w-full p-8 bg-white rounded-lg shadow">
+          <div className=" w-full p-8 bg-opacity-80  bg-white rounded-lg shadow">
             <p className="text-2xl text-center bg-gradient-to-l from-emerald-600 via-emerald-500 to-emerald-600 bg-clip-text text-transparent font-nexa font-bold">Today's Affirming Quote:</p>
             <p className="font-nexa font-ultralight text-3xl italic text-center ">
                 {quoteData.quote ? `“${quoteData.quote}” - ${quoteData.author}` : 'Loading...'}
@@ -166,7 +157,7 @@ export const Home = () => {
           </section>
         </div>
       )}
-    </body>
+    </div>
   );
 };
 
