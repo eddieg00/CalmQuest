@@ -3,7 +3,7 @@ import TaskItem from './TaskItem';
 import ConfettiAnimation from './ConfettiAnimation';
 import { useQuery } from '@apollo/client';
 import { GET_TASKS } from "../utils/queries";
-const { random } = require('../utils/randomizer');
+import { random } from '../utils/randomizer';
 
 const TaskList = () => {
   const { data } = useQuery(GET_TASKS);
