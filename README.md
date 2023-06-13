@@ -51,7 +51,7 @@ Live URL: <a href="https://">Calm Quest</a>
 ## Contribute
 Fork the repo and clone down to your local machine. Once you have the latest version of the repo, you can add or make changes then submit a pull request for your changes. Please refer to the <li><strong><a href="https://www.contributor-covenant.org/" target="__blank">Contributor Covenant</a> as an industry standard.
 
-The pull request body should describe why these changes are necessary. If there is a bug, provide a description of what steps to take to reproduce this bug. If these guidelines are not met, pull requests will not be reviewed or accepted.
+The pull request body should describe why these changes are necessary. If there is a bug, provide a description of what steps to take to reproduce this bug. If these guidelines are not met, pull requests will not be reviewed or accepted..
 
 ## License
 This project is licensed under the MIT license. For more information about this license and what it entails, visit the MIT website <a href="https://opensource.org/licenses/MIT">here</a>.
