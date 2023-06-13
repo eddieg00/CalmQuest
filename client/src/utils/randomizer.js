@@ -15,7 +15,7 @@ function random(array) {
   return shuffledArray;
 }
 
-module.exports = {
+export default {
   random
 };
 
